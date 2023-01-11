@@ -1,0 +1,124 @@
+
+###########################
+
+super + Return
+  kitty
+
+###########################
+
+
+
+
+###########################
+
+# Rofi keybidding i
+
+super + i ; {d, w, q}
+  {rofi -show drun, rofi -show window, rofi_pulse}
+
+###########################
+
+
+
+###########################
+# qtile window navigation
+###########################
+
+#super + {h, l, j, k}
+  #{lazy.layout.left(), lazy.layout.right(), lazy.layout.down(), lazy.layout.up()}
+
+
+###########################
+
+# Programs keybindding P
+
+super + p ; {f, s, m, t, q, v, r, c}
+  {firefox, screenkey, telegram-desktop, thunar, copyq, virtualbox, rofi_pulse, code, }
+
+###########################
+
+
+
+###########################
+
+
+# killing Programs (btop)
+
+ctrl + shift + k
+  alacritty -e btop
+
+###########################
+
+
+
+
+###########################
+
+# pulseaudoi-ctl
+
+##########################
+
+# Toggle mute
+XF86AudioMute
+	pulseaudio-ctl mute
+
+# mute
+alt + m
+  pulseaudio-ctl mute
+
+##########################  
+
+##########################
+
+# Toggle mic mute
+XF86AudioMicMute
+	pulseaudio-ctl mute-input
+
+# mic mute
+alt + ctrl + m
+  pulseaudio-ctl mute-input
+
+###########################
+
+###########################
+
+# Change volume
+xf86audio{Raise,Lower}Volume
+	pulseaudio-ctl {up,down} 2
+
+# Change volume
+alt + {u, i}
+  pulseaudio-ctl {down,up} 2
+
+############################
+
+
+
+
+############################
+
+#XF86MonBrightnessUp
+#XF86MonBrightnessDown 
+
+#alt + ctrl + {u, i}
+
+
+############################
+
+
+
+############################
+
+# Lock the screen
+
+#ctrl + alt + l
+  #betterlockscreen -l
+
+############################
+
+
+
+# dm-light 
+
+#ctrl + alt + l
+  #dm-tool lock
