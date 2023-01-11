@@ -1,0 +1,65 @@
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-SINO_WEALTH_Gaming_KB-event-kbd")
+  output (uinput-sink "KMonad kbd")
+  fallthrough true
+  ;;allow-cmd true
+)
+
+
+
+
+
+
+
+
+
+(defsrc
+  esc        f1        f2        f3        f4        f5        f6        f7        f8        f9         f10       f11       f12                           prnt        slck        pause
+  grv        1         2         3         4         5         6         7         8         9          0         -         =         bspc                ins         home        pgup
+  tab        q         w         e         r         t         y         u         i         o          p         [         ]         \                   del         end         pgdn
+  caps       a         s         d         f         g         h         j         k         l          ;         '         ret
+  lsft       z         x         c         v         b         n         m         ,         .          /         rsft                                                up
+  lctl       lmet      lalt                          spc                           ralt      cmp        rctl                                              left        down        rght
+)
+
+(defalias
+	vim (tap-next esc (layer-toggle vim))
+  num (tap-next spc (layer-toggle num))
+	
+  hlsft (tap-hold 200 a lsft)
+	hlctl (tap-hold 200 s lctl)
+	hlalt (tap-hold 200 d lalt)
+	hlmet (tap-hold 200 f lmet)
+
+	hrmet (tap-hold 200 j lmet)
+	hralt (tap-hold 200 k ralt)
+	hrctl (tap-hold 200 l rctl)
+	hrsft (tap-hold 200 ; rsft)
+)
+
+(deflayer base
+  caps       f1        f2        f3        f4        f5        f6        f7        f8        f9         f10       f11       f12                           prnt        slck        pause
+  XX         1         2         3         4         5         6         7         8         9          0         -         =         XX                  ins         home        pgup
+  tab        q         w         e         r         t         y         u         i         o          p         [         ]         \                   del         end         pgdn
+  @vim       @hlsft    @hlctl    @hlalt    @hlmet    g         h         @hrmet    @hralt    @hrctl     @hrsft    '         ret
+  grv        z         x         c         v         b         n         m         ,         .          /         bspc                                                up
+  XX         XX        XX                            @num                          XX        XX         XX                                                left        down        rght
+)
+
+(deflayer num
+  caps       f1        f2        f3        f4        f5        f6        f7        f8        f9         f10       f11       f12                           prnt        slck        pause
+  grv        XX        XX        XX        XX        XX        XX        XX        XX        XX         XX        XX        XX        XX                  ins         home        pgup
+  tab        1         2         3         4         5         6         7         8         9          0         -         =         \                   del         end         pgdn
+  @vim       @hlsft    @hlctl    @hlalt    @hlmet    g         h         @hrmet    @hralt    @hrctl     @hrsft    '         ret
+  XX         z         x         c         v         b         n         m         ,         .          /         bspc                                                up
+  XX         XX        XX                            spc                           XX        XX         XX                                                left        down        rght
+)
+
+(deflayer vim 
+  caps       f1        f2        f3        f4        f5        f6        f7        f8        f9         f10       f11       f12                           prnt        slck        pause
+  grv        1         2         3         4         5         6         7         8         9          0         -         =         bspc                ins         home        pgup
+  tab        q         w         e         r         t         y         u         i         o          p         [         ]         \                   del         end         pgdn
+  esc        a         s         d         f         g         left      down      up        rght       ;         '         ret
+  lsft       z         x         c         v         b         n         m         ,         .          /         rsft                                                up
+  lctl       XX        lalt                          spc                           ralt      cmp        rctl                                              left        down        rght
+)
