@@ -24,7 +24,7 @@
 
 (defalias
 	vim (tap-next esc (layer-toggle vim))
-  num (tap-next spc (layer-toggle num))
+  num (tap-next lalt (layer-toggle num))
 	
   hlsft (tap-hold 200 a lsft)
 	hlctl (tap-hold 200 s lctl)
@@ -43,7 +43,7 @@
   tab        q         w         e         r         t         y         u         i         o          p         [         ]         \                   del         end         pgdn
   @vim       @hlsft    @hlctl    @hlalt    @hlmet    g         h         @hrmet    @hralt    @hrctl     @hrsft    '         ret
   grv        z         x         c         v         b         n         m         ,         .          /         bspc                                                up
-  XX         XX        XX                            @num                          XX        XX         XX                                                left        down        rght
+  XX         XX        @num                          spc                           XX        XX         XX                                                left        down        rght
 )
 
 (deflayer num
@@ -52,7 +52,7 @@
   tab        1         2         3         4         5         6         7         8         9          0         -         =         \                   del         end         pgdn
   @vim       @hlsft    @hlctl    @hlalt    @hlmet    g         h         @hrmet    @hralt    @hrctl     @hrsft    '         ret
   XX         z         x         c         v         b         n         m         ,         .          /         bspc                                                up
-  XX         XX        XX                            spc                           XX        XX         XX                                                left        down        rght
+  XX         XX        lalt                          spc                           XX        XX         XX                                                left        down        rght
 )
 
 (deflayer vim 

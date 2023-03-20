@@ -15,8 +15,8 @@ bindkey -v
 
 
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+##export EDITOR="nvim"
+##export VISUAL="nvim"
 
 ### SET MANPAGER
 #### Uncomment only one of these! 
@@ -98,3 +98,6 @@ eval "$(zoxide init zsh)"
 # Gem
 path+=('/home/mahmoud/.local/share/gem/ruby/3.0.0/bin')
 export PATH
+
+#Python
+export PYTHONPATH=/usr/lib/python3.10/site-packages/libqtile:$PYTHONPATH
