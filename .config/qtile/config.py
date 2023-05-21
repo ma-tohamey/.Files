@@ -1,3 +1,4 @@
+from libqtile import qtile
 import os
 import subprocess
 from libqtile import bar, layout, widget, hook
@@ -7,6 +8,12 @@ from widgets.expanding_clock import ExpandingClock
 
 MOD = "mod4"
 TERMINAL = "kitty"
+
+
+if qtile.core.name == "x11":
+    term = "urxvt"
+elif qtile.core.name == "wayland":
+    term = "foot"
 
 keys = [
     Key([MOD], "Return", lazy.spawn(TERMINAL)),
@@ -22,19 +29,23 @@ keys = [
     Key([MOD, "shift"], "j", lazy.layout.shuffle_down()),
     Key([MOD, "shift"], "k", lazy.layout.shuffle_up()),
 
+    Key([MOD, "shift"], "Return", lazy.layout.toggle_split()),
+    Key([MOD, "shift"], "space", lazy.widget["keyboardlayout"].next_keyboard()),
+
     Key([MOD, "control"], "h", lazy.layout.grow_left()),
     Key([MOD, "control"], "l", lazy.layout.grow_right()),
     Key([MOD, "control"], "j", lazy.layout.grow_down()),
     Key([MOD, "control"], "k", lazy.layout.grow_up()),
-    Key([MOD], "n", lazy.layout.normalize()),
-
-    Key([MOD, "shift"], "Return", lazy.layout.toggle_split()),
-    Key([MOD], "Tab", lazy.next_layout()),
-    Key([MOD], "w", lazy.window.kill()),
     Key([MOD, "control"], "r", lazy.reload_config()),
     Key([MOD, "control"], "q", lazy.shutdown()),
-    Key([MOD], "r", lazy.spawncmd()),
+    Key([MOD, "control"], "x", lazy.spawn('dm-tool lock')),
 
+
+    Key([MOD], "Tab", lazy.next_layout()),
+    Key([MOD], "w", lazy.window.kill()),
+    Key([MOD], "r", lazy.spawncmd()),
+    Key([MOD], 'm', lazy.window.toggle_minimize()),
+    Key([MOD], "n", lazy.layout.normalize()),
 ]
 
 group_names = [
@@ -64,7 +75,7 @@ for i, name in enumerate(group_names, 1):
             Key([MOD], str(i), lazy.group[name].toscreen()),
             # MOD1 + shift + letter of group = switch to & move focused window to group
             Key([MOD, "shift"], str(i), lazy.window.togroup(
-                name, switch_group=True)),
+                name, switch_group=False)),
         ]
     )
 keys.extend(

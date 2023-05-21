@@ -8,7 +8,6 @@ super + Return
 
 
 
-
 ###########################
 
 # Rofi keybidding i
@@ -24,8 +23,8 @@ super + i ; {d, w, q}
 # qtile window navigation
 ###########################
 
-#super + {h, l, j, k}
-  #{lazy.layout.left(), lazy.layout.right(), lazy.layout.down(), lazy.layout.up()}
+super + {h, l, j, k}
+  {lazy.layout.left(), lazy.layout.right(), lazy.layout.down(), lazy.layout.up()}
 
 
 ###########################
